@@ -7,7 +7,7 @@ provider "google" {
 resource "google_storage_bucket" "data_bucket" {
   name     = "vanilla-steel-data"
   location = "europe-west3"
-  force_destroy = true  # Allows deletion of bucket without confirmation
+  force_destroy = true  
 }
 
 # Upload Cloud Function Source Code as a ZIP
@@ -56,27 +56,13 @@ resource "google_bigquery_dataset" "dataset" {
     environment = "production"
   }
 
-  delete_contents_on_destroy = true  # Ensures the dataset can be destroyed
+  delete_contents_on_destroy = true  
 }
 
-# BigQuery Tables
-resource "google_bigquery_table" "supplier_data" {
+# BigQuery Table Schema for Merged Inventory Data
+resource "google_bigquery_table" "inventory_dataset" {
   dataset_id = google_bigquery_dataset.dataset.dataset_id
-  table_id   = "supplier_data"
-  schema     = file("schemas/supplier_schema.json")
-  deletion_protection=false
-}
-
-resource "google_bigquery_table" "buyer_data" {
-  dataset_id = google_bigquery_dataset.dataset.dataset_id
-  table_id   = "buyer_data"
-  schema     = file("schemas/buyer_schema.json")
-  deletion_protection=false
-}
-
-resource "google_bigquery_table" "recommendations" {
-  dataset_id = google_bigquery_dataset.dataset.dataset_id
-  table_id   = "recommendations"
-  schema     = file("schemas/recommendation_schema.json")
-  deletion_protection=false
+  table_id   = "inventory_dataset"
+  schema     = file("schemas/inventory_schema.json")
+  deletion_protection = false
 }

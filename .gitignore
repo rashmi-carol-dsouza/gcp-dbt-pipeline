@@ -1,8 +1,21 @@
+# Folders with data
 resources/
+schemas/
+cloud_function.zip
+
+# Terraform
 .terraform.lock.hcl
 .terraform/
-google-cloud-cli-450.0.0-linux-x86_64.tar.gz
 terraform.tfstate
 terraform.tfstate.backup
-schemas/
+terraform.tfstate.1740611838.backup
+.terraform.tfstate.lock.info
+
+# GCP
+google-cloud-cli-450.0.0-linux-x86_64.tar.gz
+.gcloudignore
+
+# Python
+__pycache__
+
 
