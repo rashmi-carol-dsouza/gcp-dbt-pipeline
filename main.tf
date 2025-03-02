@@ -45,13 +45,26 @@ resource "google_bigquery_table" "supplier_data_1" {
   deletion_protection = false
 }
 
-# # BigQuery Table for Supplier Data 2
-# resource "google_bigquery_table" "supplier_data_2" {
-#   dataset_id          = google_bigquery_dataset.dataset.dataset_id
-#   table_id            = "supplier_data_2"
-#   schema              = file("schemas/supplier_data2.json")
-#   deletion_protection = false
-# }
+# BigQuery Table for Supplier Data 2(Task 3)
+resource "google_bigquery_table" "supplier_data_2" {
+  dataset_id          = google_bigquery_dataset.dataset.dataset_id
+  table_id            = "supplier_data_2"
+  schema              = file("schemas/supplier_data2.json")
+  deletion_protection = false
+
+    lifecycle {
+    ignore_changes = [schema, deletion_protection]
+  }
+}
+
+# BigQuery Table Schema for Deals (Task 2) - Native Table
+resource "google_bigquery_table" "deals_table" {
+  dataset_id = google_bigquery_dataset.dataset.dataset_id
+  table_id   = "deals"
+
+  schema     = file("schemas/deals_schema.json")
+  deletion_protection = false
+}
 
 # Cloud Storage Bucket for Cloud Function Code
 resource "google_storage_bucket" "function_bucket" {
