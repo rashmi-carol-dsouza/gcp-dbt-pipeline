@@ -18,4 +18,10 @@ google-cloud-cli-450.0.0-linux-x86_64.tar.gz
 # Python
 __pycache__
 
+#  logs
+logs/
+
+# dbt
+targets/
+profiles.yml
 

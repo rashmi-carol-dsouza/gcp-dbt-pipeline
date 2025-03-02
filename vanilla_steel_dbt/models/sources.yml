@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: vanilla_steel
+    database: vanillasteel
+    schema: vanilla_steel
+    tables:
+      - name: supplier_data_1
+      - name: supplier_data_2
+      - name: buyer_preferences
