@@ -69,6 +69,10 @@ upload-task3-supplier1:
 upload-task3-supplier2:
 	gsutil cp resources/task_3/supplier_data2.xlsx gs://$(DATA_BUCKET)
 
+upload-deals:
+	gsutil cp resources/task_2/deals.csv gs://$(DATA_BUCKET)
+
+
 upload_all: upload-task1-supplier1 upload-task1-supplier2 upload-task3-buyer upload-task3-supplier1 upload-task3-supplier2
 
 
@@ -89,6 +93,9 @@ query3:
 query4:
 	bq query --use_legacy_sql=false 'SELECT * FROM vanilla_steel.supplier_data_2 LIMIT 10'
 
+query5:
+	bq query --use_legacy_sql=false 'SELECT * FROM vanilla_steel.deals LIMIT 10'
+
 # DELETE Data in BigQuery (Task 1 - First)
 delquery1:
 	bq query --use_legacy_sql=false 'DELETE FROM `vanilla_steel.inventory_dataset` WHERE TRUE;'
@@ -101,5 +108,8 @@ delquery3:
 
 delquery4:
 	bq query --use_legacy_sql=false 'DELETE FROM `vanilla_steel.supplier_data_2` WHERE TRUE;'
+
+delquery5:
+	bq query --use_legacy_sql=false 'DELETE FROM `vanilla_steel.deals` WHERE TRUE;'
 
 delquery_all: delquery1 delquery2 delquery3 delquery4 

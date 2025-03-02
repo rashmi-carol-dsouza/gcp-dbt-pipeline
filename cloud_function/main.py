@@ -7,6 +7,7 @@ from task1_process_supplier_2 import process_supplier_2
 from task3_process_buyer_preferences import process_buyer_preferences
 from task3_process_supplier_1 import process_task3_supplier_1
 from task3_process_supplier_2 import process_task3_supplier_2
+from task2_process_deals import process_deals
 
 # Set up Google Cloud clients
 storage_client = storage.Client()
@@ -57,6 +58,9 @@ def ingest_data(cloud_event):
     elif "supplier_data2" in file_name.lower():
         df = process_task3_supplier_2(df)
         target_table = "supplier_data_2"
+    elif "deals.csv" in file_name.lower():  # NEW: Deals CSV Processing
+        df = process_deals(df)  # Process deals
+        target_table = "deals"
     else:
         print(f"No processing logic found for file: {file_name}. Skipping.")
         return
