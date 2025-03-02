@@ -1,0 +1,21 @@
+
+name: 'vanilla_steel_dbt'
+version: '1.0.0'
+
+profile: 'vanilla_steel_dbt'
+
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+models:
+  vanilla_steel_dbt:
+    +materialized: table
