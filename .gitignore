@@ -21,8 +21,14 @@ __pycache__
 
 #  logs
 logs/
+dbt_debug.log
 
 # dbt
-targets/
+target/
+seeds/
+analyses/
 profiles.yml
+
+
+
 
