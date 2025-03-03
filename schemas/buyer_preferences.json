@@ -1,0 +1,9 @@
+[
+  {"name": "buyer_id", "type": "STRING"},
+  {"name": "preferred_grade", "type": "STRING"},
+  {"name": "preferred_finish", "type": "STRING"},
+  {"name": "preferred_thickness_mm", "type": "FLOAT"},
+  {"name": "preferred_width_mm", "type": "FLOAT"},
+  {"name": "max_weight_kg", "type": "FLOAT"},
+  {"name": "min_quantity", "type": "INTEGER"}
+]

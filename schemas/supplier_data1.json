@@ -1,0 +1,14 @@
+[
+  {"name": "quality_choice", "type": "STRING"},
+  {"name": "grade", "type": "STRING"},
+  {"name": "finish", "type": "STRING"},
+  {"name": "thickness_mm", "type": "FLOAT"},
+  {"name": "width_mm", "type": "FLOAT"},
+  {"name": "description", "type": "STRING"},
+  {"name": "gross_weight_kg", "type": "FLOAT"},
+  {"name": "rp02", "type": "FLOAT"},
+  {"name": "rm", "type": "FLOAT"},
+  {"name": "quantity", "type": "INTEGER"},
+  {"name": "ag", "type": "FLOAT"},
+  {"name": "ai", "type": "FLOAT"}
+]
