@@ -105,5 +105,45 @@ resource "google_cloudfunctions_function" "data_ingestion" {
   timeout            = 120
 }
 
+# Upload Cloud Function Source Code for dbt Runner
+data "archive_file" "dbt_function_zip" {
+  type        = "zip"
+  source_dir  = "cloud_function"
+  output_path = "dbt_function.zip"
+}
 
+resource "google_storage_bucket_object" "dbt_function_archive" {
+  name   = "dbt_function.zip"
+  bucket = google_storage_bucket.function_bucket.name
+  source = data.archive_file.dbt_function_zip.output_path
+}
+
+# Deploy Cloud Function for dbt Runner
+resource "google_cloudfunctions_function" "dbt_runner" {
+  name        = "dbt-runner-function"
+  region      = "europe-west3"
+  runtime     = "python311"
+  entry_point = "run_dbt"
+  source_archive_bucket = google_storage_bucket.function_bucket.name
+  source_archive_object = google_storage_bucket_object.dbt_function_archive.name
+  trigger_http = true
+  available_memory_mb = 512
+  timeout = 300
+
+  environment_variables = {
+    DBT_PROFILES_DIR = "/workspace"
+  }
+}
+
+# Cloud Scheduler Job to Trigger Cloud Function Daily
+resource "google_cloud_scheduler_job" "dbt_scheduler" {
+  name     = "dbt-daily-run"
+  region   = "europe-west3"
+  schedule = "0 0 * * *"  # Runs at midnight daily
+
+  http_target {
+    uri = google_cloudfunctions_function.dbt_runner.https_trigger_url
+    http_method = "POST"
+  }
+}
 
