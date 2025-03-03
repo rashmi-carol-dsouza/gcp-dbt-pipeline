@@ -1,0 +1,8 @@
+[
+    {"name": "material", "type": "STRING"},
+    {"name": "description", "type": "STRING"},
+    {"name": "article_id", "type": "STRING"},
+    {"name": "weight_kg", "type": "FLOAT"},
+    {"name": "quantity", "type": "INTEGER"},
+    {"name": "reserved", "type": "STRING"}
+]

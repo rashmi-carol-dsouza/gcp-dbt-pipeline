@@ -1,6 +1,5 @@
 # Folders with data
 resources/
-schemas/
 cloud_function.zip
 
 # Terraform
