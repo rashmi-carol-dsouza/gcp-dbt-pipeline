@@ -8,7 +8,7 @@ This project automates **data ingestion, transformation, and reporting** using *
 This project is structured into **three tasks**:
 
 ### **Task 1: Supplier Inventory Processing**
-- Users upload **supplier_data_1.csv** or **supplier_data_2.csv** to **Google Cloud Storage** (`vanilla-steel-data` bucket).
+- Users upload **supplier_data_1.xlsx** or **supplier_data_2.xlsx** to **Google Cloud Storage** (`vanilla-steel-data` bucket).
 - **Cloud Function** (`data-ingestion-function`) is triggered.
 - The function applies **data cleaning**:
   - `task1_process_supplier_1.py` → Cleans Supplier 1 data.
@@ -16,7 +16,7 @@ This project is structured into **three tasks**:
 - Processed data is **stored in BigQuery** (`vanilla_steel.inventory_dataset` table).
 
 ### **Task 2: Deals Data Processing & Transformation**
-- Users upload **deals.csv** to **Google Cloud Storage** (`vanilla-steel-data` bucket).
+- Users upload **deals.xlsx** to **Google Cloud Storage** (`vanilla-steel-data` bucket).
 - **Cloud Function** processes and loads data into **BigQuery** (`vanilla_steel.deals` table).
 - A **dbt job runs once a day** to:
   - Create **aggregated revenue tables**.
@@ -24,7 +24,7 @@ This project is structured into **three tasks**:
   - Optimize data for **Looker dashboards**.
 
 ### **Task 3: Supplier Recommendation System**
-- Users upload **supplier_data_1.csv** and **supplier_data_2.csv** to **Google Cloud Storage**.
+- Users upload **supplier_data_1.xlsx** and **supplier_data_2.xlsx** to **Google Cloud Storage**.
 - **Cloud Function** processes and stores cleaned data into **BigQuery** as:
   - `vanilla_steel.supplier_data_1`
   - `vanilla_steel.supplier_data_2`
@@ -74,9 +74,9 @@ terraform apply -auto-approve
 Upload required data files to Google Cloud Storage:
 
 ```sh
-gsutil cp supplier_data_1.csv gs://vanilla-steel-data/
-gsutil cp supplier_data_2.csv gs://vanilla-steel-data/
-gsutil cp deals.csv gs://vanilla-steel-data/
+gsutil cp supplier_data_1.xlsx gs://vanilla-steel-data/
+gsutil cp supplier_data_2.xlsx gs://vanilla-steel-data/
+gsutil cp deals.xlsx gs://vanilla-steel-data/
 ```
 
 ---
