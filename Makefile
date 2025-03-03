@@ -72,7 +72,6 @@ upload-task3-supplier2:
 upload-deals:
 	gsutil cp resources/task_2/deals.csv gs://$(DATA_BUCKET)
 
-
 upload_all: upload-task1-supplier1 upload-task1-supplier2 upload-task3-buyer upload-task3-supplier1 upload-task3-supplier2
 
 
