@@ -8,3 +8,4 @@ sources:
       - name: supplier_data_1
       - name: supplier_data_2
       - name: buyer_preferences
+      - name: deals 
