@@ -16,7 +16,7 @@ This project is structured into **three tasks**:
 - Processed data is **stored in BigQuery** (`vanilla_steel.inventory_dataset` table).
 
 ### **Task 2: Deals Data Processing & Transformation**
-- Users upload **deals.xlsx** to **Google Cloud Storage** (`vanilla-steel-data` bucket).
+- Users upload **deals.csv** to **Google Cloud Storage** (`vanilla-steel-data` bucket).
 - **Cloud Function** processes and loads data into **BigQuery** (`vanilla_steel.deals` table).
 - A **dbt job runs once a day** to:
   - Create **aggregated revenue tables**.
